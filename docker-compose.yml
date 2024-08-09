@@ -1,0 +1,12 @@
+services:
+  jekyll:
+    image: jekyll/jekyll:latest
+    container_name: jekyll-site
+    command: bash -c "bundle install && jekyll serve --config _config.yml,_config.local.yml -d _site --watch --host 0.0.0.0 --verbose"
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "4000:4000"
+    environment:
+      - JEKYLL_ENV=development
+    working_dir: /srv/jekyll
